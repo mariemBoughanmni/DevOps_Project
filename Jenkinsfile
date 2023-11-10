@@ -10,7 +10,7 @@ pipeline{
             steps{
       			checkout([$class: 'GitSCM', branches: [[name: '*/main']],
 			extensions: [],
-			userRemoteConfigs: [[url: 'https://github.com/housseml17/DevOps_Project.git']]])
+			userRemoteConfigs: [[url: 'https://github.com/mariemBoughanmni/DevOps_Project.git']]])
             }
         }
 
@@ -40,12 +40,13 @@ pipeline{
 
 
 
-        stage('SONARQUBE') {
-            steps{
+        stage('Code Quality Check via SonarQube') {
+                   steps{
 
-             		sh " mvn clean verify sonar:sonar -Dsonar.projectKey=DevOps_Project -Dsonar.projectName='DevOps_Project' -Dsonar.host.url=http://192.168.56.2:9000 -Dsonar.token=sqp_313fd4947b5c9b8ca0ba0214ca027607fd9955f8 "
-            }
-        }
+                    		sh "  mvn clean verify sonar:sonar -Dsonar.projectKey=cicd -Dsonar.projectName='cicd' -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.token=sqp_2d9c32825b84fd25555d9230e8b94561bfb89119 "
+
+                   }
+               }
 
 
         stage('Publish to Nexus') {
@@ -61,36 +62,36 @@ pipeline{
 stage('Build Backend Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t toumi15/spring-app:Toumi .'
+                           sh 'docker build -t amirovvv/spring-app:second .'
                           }
                       }
                   }
 
                   stage('login dockerhub') {
                                         steps {
-				sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
+				sh 'docker login -u amirovvv --password dckr_pat_LAIjui5cw-3dOSsdt8AoUuVNZ5o'
                                             }
 		  }
 
 	                      stage('Push Backend Docker Image') {
                                         steps {
-                                   sh 'docker push toumi15/spring-app:Toumi'
+                                   sh 'docker push amirovvv/spring-app:second'
                                             }
 		  }
 
- stage('clone frontend'){
+/*  stage('clone frontend'){
          steps{
              script{
-                   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
+                   checkout([$class: 'GitSCM', branches: [[name: '*//* main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
 
 
 ]]])
              }
          }
 
- }
+ } */
 
- stage("build and push frontend docker image") {
+ /* stage("build and push frontend docker image") {
         
          
             steps {
@@ -134,14 +135,14 @@ stage('Build Backend Docker Image') {
 
 
 
-            }
+            } */
 
 
 stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
                                       echo "MySql"
-					    //sh 'docker-compose up -d'
+					    sh 'docker-compose up -d'
                                     }
                                 }
                             }
