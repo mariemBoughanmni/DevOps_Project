@@ -50,14 +50,14 @@ pipeline{
 
 
         stage('Publish to Nexus') {
-            steps {
+                   steps {
 
 
-  sh 'mvn deploy'
+         sh 'mvn clean package deploy:deploy-file -DgroupId=tn.esprit.devops_project -DartifactId=DevOps_Project -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=maven-releases -Durl=http://172.10.0.140:8081/repository/maven-releases/ -Dfile=target/DevOps_Project-1.2.jar'
 
 
-            }
-        }
+                   }
+               }
 
 stage('Build Backend Docker Image') {
                       steps {
