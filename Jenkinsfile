@@ -62,20 +62,20 @@ pipeline{
 stage('Build Backend Docker Image') {
                       steps {
                           script {
-                           sh 'docker build -t amirovvv/spring-app:second .'
+                           sh 'docker build -t mariemmm935/spring-app:mariemdevops .'
                           }
                       }
                   }
 
                   stage('login dockerhub') {
                                         steps {
-				sh 'docker login -u amirovvv --password dckr_pat_LAIjui5cw-3dOSsdt8AoUuVNZ5o'
+				sh 'docker login -u mariemmm935 --password dckr_pat_PWrzv5C_U5p9vuubMxCmZYi7dTY'
                                             }
 		  }
 
 	                      stage('Push Backend Docker Image') {
                                         steps {
-                                   sh 'docker push amirovvv/spring-app:second'
+                                   sh 'docker push mariemmm935/spring-app:mariemdevops'
                                             }
 		  }
 

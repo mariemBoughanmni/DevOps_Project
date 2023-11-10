@@ -21,7 +21,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=devops
   spring-app:
-    image: toumi15/spring-app:Toumi
+    image: mariemmm935/spring-app:mariemdevops
     depends_on:
       - mysql
     environment:
@@ -30,20 +30,4 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
     ports:
       - "82:82"
-angular-app:
-    image:  toumi15/front-app:Toumi
-    ports:
-      - "4200:80"  # Adapter le port selon les spécifications de votre application Angular
-    depends_on:
-      - spring-app
-  mysql-exporter:
-    image: prom/mysqld-exporter
-    container_name: mysql-exporter
-    ports:
-      - 9104:9104
-    volumes:
-      - ./mysql-exporter/.my.cnf:/root/.my.cnf
-    environment:
-      - DATA_SOURCE_NAME="root:@mysql:3306/devops"
-    depends_on:
-      - mysql
+
