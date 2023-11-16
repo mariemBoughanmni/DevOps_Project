@@ -89,9 +89,9 @@ stage('Build Backend Docker Image') {
              }
          }
 
- } */
+ } 
 
- /* stage("build and push frontend docker image") {
+  stage("build and push frontend docker image") {
         
          
             steps {
@@ -135,7 +135,7 @@ stage('Build Backend Docker Image') {
 
 
 
-            } */
+            } 
 
 
 stage('Run Spring && MySQL Containers') {
