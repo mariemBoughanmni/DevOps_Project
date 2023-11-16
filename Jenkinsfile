@@ -79,10 +79,10 @@ stage('Build Backend Docker Image') {
                                             }
 		  }
 
-/*  stage('clone frontend'){
+  stage('clone frontend'){
          steps{
              script{
-                   checkout([$class: 'GitSCM', branches: [[name: '*//* main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
+                   checkout([$class: 'GitSCM', branches: [[name: '*//* main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/mariemmm935/front.git"
 
 
 ]]])
@@ -97,9 +97,9 @@ stage('Build Backend Docker Image') {
             steps {
                 script {
                      
-             sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
+             sh 'docker login -u mariemmm935 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
          
-             sh "docker push toumi15/front-app:Toumi"
+             sh "docker push mariemmm935/front-app:mariemmm935"
            
                 }
             }
@@ -114,7 +114,7 @@ stage('Build Backend Docker Image') {
 	    stage('Build Frontend Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t toumi15/front-app:Toumi .'
+                            sh 'docker build -t mariemmm935/front-app:mariemmm935 .'
                           }
                       }
                   }
@@ -125,9 +125,9 @@ stage('Build Backend Docker Image') {
             steps {
                 script {
 
-             sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
+             sh 'docker login -u mariemmm935 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
 
-             sh "docker push toumi15/front-app:Toumi"
+             sh "docker push mariemmm935/front-app:mariemmm935"
 
                 }
             }
