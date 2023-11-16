@@ -99,7 +99,7 @@ stage('Build Backend Docker Image') {
                      
              sh 'docker login -u mariemmm935 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
          
-             sh "docker push mariemmm935/front-app:mariemmm935"
+             sh "docker push mariemmm935/front-app:mariemdevopsfront"
            
                 }
             }
@@ -114,7 +114,7 @@ stage('Build Backend Docker Image') {
 	    stage('Build Frontend Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t mariemmm935/front-app:mariemmm935 .'
+                            sh 'docker build -t mariemmm935/front-app:mariemdevopsfront .'
                           }
                       }
                   }
@@ -127,7 +127,7 @@ stage('Build Backend Docker Image') {
 
              sh 'docker login -u mariemmm935 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
 
-             sh "docker push mariemmm935/front-app:mariemmm935"
+             sh "docker push mariemmm935/front-app:mariemdevopsfront"
 
                 }
             }
